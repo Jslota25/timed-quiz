@@ -15,20 +15,21 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Take Quiz<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Timer<span class="sr-only">(current)</span></a>
-              </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">High Scores<span class="sr-only">(current)</span></a>
-              </li>
+            <li class="nav-item active"></li>
           </ul>
+          <span class = "navbar-text" id = "timeClock">Time Clock</span>
         </div>
       </nav>
+
+      <div class="jumbotron jumbotron-fluid">
+          <div class="container" id="quiz-container">
+              <h1 class="display-4">Quiz</h1>
+              <p class="lead">You have 60 seconds to answer all questions.  If you miss a question, 10 seconds will be deucted from the timer.  Good luck!</p>
+              <a class="btn btn-primary btn-lg" id="start-button" role="button">Start</a>
+          </div>
+      </div>
     
 <!--Javascript and Bootstrap links-->
     <script src="script.js"></script>

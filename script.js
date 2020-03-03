@@ -1,47 +1,54 @@
+var score = 0;
+var highScores = document.getElementById("high-scores");
+var timeClock = document.getElementById("time-clock");
+var quizContainer = document.getElementById("quiz-container");
+var startButton = document.getElementById("start-button");
+startButton.addEventListener("click", startQuiz);
+
+
 var questions = [
     {
-        question: 'What is my middle name?',
+        question: 'Do you know what I want, what I really, really want?',
         potential_answers: [
             {
                 id: 'a',
-                answer: 'Charles'
+                answer: 'Ha'
             },
             {
                 id: 'b',
-                answer: 'Frederick'
+                answer: 'Ha'
             },
             {
                 id: 'c',
-                answer: 'Allen'
+                answer: 'Ha'
             },
             {
                 id: 'd',
-                answer: "I don't have one."
+                answer: "Zigazig ah"
             }
         ],
-        correct_answer: 'a'
+        correct_answer: 'd'
     },
     {
-        question: 'Where did I first attend graduate school?',
+        question: 'If all the stars in the observable universe were evenly distributed among all humans alive today, how many stars would each human get?',
         potential_answers: [
             {
                 id: 'a',
-                answer: 'The University of Utah'
+                answer: '10 billion'
             },
             {
                 id: 'b',
-                answer: 'Duke University'
+                answer: '500 billion'
             },
             {
                 id: 'c',
-                answer: 'Vanderbilt University'
+                answer: '1 trillion'
             },
             {
                 id: 'd',
-                answer: 'The Penn State University'
+                answer: '44 trillion'
             }
         ],
-        correct_answer: 'b'
+        correct_answer: 'd'
     }
 ]
-

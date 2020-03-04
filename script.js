@@ -1,4 +1,6 @@
 var score = 0;
+var timer;
+var quizTime = 60;
 var highScores = document.getElementById("high-scores");
 var timeClock = document.getElementById("time-clock");
 var quizContainer = document.getElementById("quiz-container");
@@ -51,4 +53,29 @@ var questions = [
         ],
         correct_answer: 'd'
     }
-]
+];
+
+function startQuiz() {
+    renderQuestion();
+    startTimer();
+};
+
+function renderQuestion() {
+    
+}
+
+function endQuiz() {
+
+}
+
+function startTimer() {
+    var timerInterval = setInterval(function () {
+        quizTime--;
+        timeClock.textContent = quizTime;
+
+        if(quizTime === 0) {
+            clearInterval(timerInterval);
+        }
+    }, 1000);
+        
+}

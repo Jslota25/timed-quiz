@@ -1,73 +1,70 @@
-var score = 0;
-var timer;
-var quizTime = 60;
 var highScores = document.getElementById("high-scores");
+var score = 0;
+
 var timeClock = document.getElementById("time-clock");
+var timer;
+var quizTime = 5;
+
 var quizContainer = document.getElementById("quiz-container");
 var startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startQuiz);
 
+var questionNum = 0;
+var answerNum = 0;
 
 var questions = [
     {
-        question: 'Do you know what I want, what I really, really want?',
-        potential_answers: [
-            {
-                id: 'a',
-                answer: 'Ha'
-            },
-            {
-                id: 'b',
-                answer: 'Ha'
-            },
-            {
-                id: 'c',
-                answer: 'Ha'
-            },
-            {
-                id: 'd',
-                answer: "Zigazig ah"
-            }
-        ],
-        correct_answer: 'd'
+      question: "Do you know what I want? What I really, really want?",
+      answers: ["Ha", "Ha", "Ha", "Zigazig ah"],
+      correctAnswer: "Zigazig ah"
     },
+  
     {
-        question: 'If all the stars in the observable universe were evenly distributed among all humans alive today, how many stars would each human get?',
-        potential_answers: [
-            {
-                id: 'a',
-                answer: '10 billion'
-            },
-            {
-                id: 'b',
-                answer: '500 billion'
-            },
-            {
-                id: 'c',
-                answer: '1 trillion'
-            },
-            {
-                id: 'd',
-                answer: '44 trillion'
-            }
-        ],
-        correct_answer: 'd'
+      question: "Is this the Krusty Krab?",
+      answers: ["Yes", "No", "Maybe", "No, this is Patrick"],
+      correctAnswer: "No, this is Patrick"
     }
 ];
 
+
 function startQuiz() {
-    renderQuestion();
     startTimer();
+    renderQuestion();
 };
 
 function renderQuestion() {
-    
+    quizContainer.innerHTML = questions[questionNum].question;
+
+    for(var i = 0; i < questions[questionNum].answers.length; i++) {
+        var display = document.createElement("h1");
+        var button = document.createElement("button");
+        button.innerHTML = questions[questionNum].answers[i];
+        button.setAttribute("class", "btn");
+        quizContainer.appendChild(display);
+        display.appendChild(button);
+        button.addEventListener("click", checkAnswers);
+    }
 }
 
-function endQuiz() {
+function checkAnswers(event) {
+    var userAnswer = event.target.textContent;
+    var correctAnswer = questions[questionNum].correctAnswer;
 
+    if(userAnswer === correctAnswer) {
+        score ++;
+    } else {
+        quizTime -= 10;
+    }
+
+    questionNum ++;
+    quizContainer.innerHTML = "";
+
+    if (questionNum < 2) {
+        renderQuestion();
+    } else {
+          endQuiz();
+    }
 }
-
 function startTimer() {
     var timerInterval = setInterval(function () {
         quizTime--;
@@ -75,7 +72,12 @@ function startTimer() {
 
         if(quizTime === 0) {
             clearInterval(timerInterval);
+            endQuiz();
         }
     }, 1000);
         
+}
+
+function endQuiz() {
+
 }

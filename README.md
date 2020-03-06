@@ -10,7 +10,7 @@ HTML, CSS, Javascript
 This is a timed quiz that keeps score and reduces the time left in the quiz by 10 seconds for every missed queston.  High scores are recorded in local storage.
 
 # Link
-<a href ="https://jslota25.github.io/random-password-generator">jslota25.github.io/random-password-generator</a>
+<a href ="https://jslota25.github.io/timed-quiz/">jslota25.github.io/timed-quiz</a>
 
 # Contact
 Email: <a href="mailto:jslota17@comcast.net">jslota17@comcast.net</a> <br>

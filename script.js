@@ -2,8 +2,7 @@ var highScores = document.getElementById("high-scores");
 var score = 0;
 
 var timeClock = document.getElementById("time-clock");
-var timer;
-var quizTime = 5;
+var quizTime = 60;
 
 var quizContainer = document.getElementById("quiz-container");
 var startButton = document.getElementById("start-button");
@@ -14,15 +13,33 @@ var answerNum = 0;
 
 var questions = [
     {
-      question: "Do you know what I want? What I really, really want?",
-      answers: ["Ha", "Ha", "Ha", "Zigazig ah"],
-      correctAnswer: "Zigazig ah"
+        question: "Do you know what I want? What I really, really want?",
+        answers: ["Ha", "Ha", "Ha", "Zigazig ah"],
+        correctAnswer: "Zigazig ah"
     },
   
     {
-      question: "Is this the Krusty Krab?",
-      answers: ["Yes", "No", "Maybe", "No, this is Patrick"],
-      correctAnswer: "No, this is Patrick"
+        question: "Is this the Krusty Krab?",
+        answers: ["Yes", "No", "Maybe", "No, this is Patrick"],
+        correctAnswer: "No, this is Patrick"
+        },
+
+    {
+        question: "What is Leonardo DiCaprio's best movie?",
+        answers: ["Titanic", "The Great Gatsby", "The Wolf of Wall Street", "The Revenant"],
+        correctAnswer: "The Wolf of Wall Street"
+    },
+
+    {
+        question: "What planet does Yoda live on?",
+        answers: ["Tatooine", "Dagobah", "Hoth", "Endor"],
+        correctAnswer: "Dagobah"
+    },
+
+    {
+        question: "Which band did Jerry Garcia play in?",
+        answers: ["Phish", "Wiespread Panic", "The Grateful Dead", "Blues Traveler"],
+        correctAnswer: "The Grateful Dead"
     }
 ];
 
@@ -59,12 +76,13 @@ function checkAnswers(event) {
     questionNum ++;
     quizContainer.innerHTML = "";
 
-    if (questionNum < 2) {
+    if (questionNum < 5) {
         renderQuestion();
     } else {
           endQuiz();
     }
 }
+
 function startTimer() {
     var timerInterval = setInterval(function () {
         quizTime--;
@@ -72,12 +90,13 @@ function startTimer() {
 
         if(quizTime === 0) {
             clearInterval(timerInterval);
-            endQuiz();
+            quizContainer.innerHTML = "You lost";
         }
-    }, 1000);
-        
+    }, 1000);       
 }
 
 function endQuiz() {
-
+    quizContainer.innerHTML = "You scored " + score + " points!";
+    clearInterval(timerInterval);
+    localStorage.setItem("high-score", score);
 }
